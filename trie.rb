@@ -18,7 +18,26 @@ class Trie
   end
   
   def remove_word(word)
-    
+    # Look through the trie node by node
+    # Once we've reached the end of the word and proper final node,
+    # => (assuming the trie contains the word and we actually got there)
+    # => we need to delete that node and all parents until we find one
+    # => with more than one child (this is to maintain minimum size)
+  end
+  
+  def has_word?(word)
+    !!find_word(word)
+  end
+  
+  # This returns the last child of a word if it exists, nil otherwise
+  # Break this up so it can be used by has_word? and remove_word
+  def find_word(word, node = @root)
+    if word == "" && node.end_of_word
+      return node
+    else
+      child = node.find_child(word[0])
+      child ? find_word(word[1..-1], child) : nil
+    end
   end
   
   def all_words
