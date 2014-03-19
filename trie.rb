@@ -18,7 +18,7 @@ class Trie
   end
   
   def all_words
-    @root.check_for_words("")
+    @root.check_for_words
   end
   
 end

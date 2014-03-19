@@ -35,7 +35,7 @@ class TrieNode
     @children.map(&:value)
   end
   
-  def check_for_words(prefix)
+  def check_for_words(prefix = "")
     puts prefix + @value if @end_of_word
     
     prefix += @value
