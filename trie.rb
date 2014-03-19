@@ -5,7 +5,7 @@ class Trie
   attr_reader :root
   
   def initialize
-    @root = TrieNode.new("", nil)
+    @root = TrieNode.new("", nil, 0)
   end
   
   def add_word(word, node = @root)
@@ -17,8 +17,17 @@ class Trie
     end
   end
   
+  def remove_word(word)
+    
+  end
+  
   def all_words
     @root.get_words
+  end
+  
+  def render
+    @root.children.each(&:print)
+    nil
   end
   
 end

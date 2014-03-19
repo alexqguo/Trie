@@ -3,9 +3,9 @@ class TrieNode
   attr_reader :value, :parent, :children
   attr_accessor :end_of_word
   
-  def initialize(value, parent, end_of_word = false, children = [])
+  def initialize(value, parent, level, end_of_word = false, children = [])
     raise "Invalid TrieNode Value - #{value}" unless value.is_a?(String) && value.length <= 1
-    @value, @parent, @end_of_word, @children = value, parent, end_of_word, children
+    @value, @parent, @level, @end_of_word, @children = value, parent, level, end_of_word, children
   end
   
   def has_child?(char)
@@ -14,7 +14,7 @@ class TrieNode
   
   def add_child(char)
     unless has_child?(char)
-      new_child = TrieNode.new(char, self)
+      new_child = TrieNode.new(char, self, @level + 1)
       @children << new_child
     
       new_child
@@ -44,5 +44,9 @@ class TrieNode
     words.flatten
   end
 
+  def print
+    puts "#{"." * (@level - 1)}#{@value}#{"*" if @end_of_word}"
+    @children.each(&:print)
+  end
   
 end
