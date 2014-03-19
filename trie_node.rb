@@ -43,6 +43,10 @@ class TrieNode
     words << prefix if @end_of_word
     words.flatten
   end
+  
+  def remove_unnecessary_parents
+    
+  end
 
   def print
     puts "#{"." * (@level - 1)}#{@value}#{"*" if @end_of_word}"
