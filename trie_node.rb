@@ -35,11 +35,13 @@ class TrieNode
     @children.map(&:value)
   end
   
-  def check_for_words(prefix = "")
-    puts prefix + @value if @end_of_word
-    
+  def get_words(prefix = "")
+    words = []
     prefix += @value
-    @children.each { |child| child.check_for_words(prefix) }
+    @children.each { |child| words << child.get_words(prefix) }
+    
+    words << prefix if @end_of_word
+    words.flatten
   end
 
   

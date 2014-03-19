@@ -18,7 +18,7 @@ class Trie
   end
   
   def all_words
-    @root.check_for_words
+    @root.get_words
   end
   
 end
@@ -37,5 +37,9 @@ trie = Trie.new
 trie.add_word("help")
 trie.add_word("hell")
 trie.add_word("hello")
+trie.add_word("apple")
+trie.add_word("apply")
+trie.add_word("application")
+trie.add_word("applicable")
 
 =end
