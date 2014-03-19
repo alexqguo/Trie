@@ -19,11 +19,21 @@ class Trie
   
   def remove_word(word)
     # Use find_word to get the last node (return nil if it doesn't exist)
-    # Go up through its parents recursively and clear the children until
-    # => we find a parent with more than one child, and then only remove the
-    # => proper one (this is to maintain minimum size)
+    # If this child node has no children:
+      # Go up through its parents recursively and clear the children until
+      # => we find a parent with more than one child, and then only remove the
+      # => proper one (this is to maintain minimum size)
+    # But if it DOES have children
+    # => We just change the flag, since there are more words that depend on
+    # => the one we want to delete and we don't want to remove those as well
     last_child = find_word(word)
-    last_child ? last_child.remove_unnecessary_parents : false
+    
+    if last_child
+      last_child.end_of_word = false
+      last_child.remove_unnecessary_parents if last_child.children.empty?
+    end
+    
+    !!last_child
   end
   
   def has_word?(word)
