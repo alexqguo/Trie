@@ -17,9 +17,12 @@ class Trie
   
 end
 
+
+
 class TrieNode
   
-  attr_reader :value, :parent, :end_of_word, :children
+  attr_reader :value, :parent, :children
+  attr_accessor :end_of_word
   
   def initialize(value, parent, end_of_word = false, children = [])
     raise "Invalid TrieNode Value - #{value}" unless value.is_a?(String) && value.length <= 1
@@ -61,6 +64,8 @@ node.add_child("d")
 node.add_child("c")
 
 trie = Trie.new
+trie.add_word("help")
+trie.add_word("hell")
 trie.add_word("hello")
 
 =end
