@@ -1,4 +1,6 @@
 #Trie
+======
+Basic implementation of a Trie, for no particular reason.
 
-##todo
+###todo
 - Trie#remove_word
