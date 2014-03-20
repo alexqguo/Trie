@@ -30,7 +30,7 @@ class Trie
     
     if last_child
       last_child.end_of_word = false
-      last_child.remove_unnecessary_parents if last_child.children.empty?
+      last_child.parent.remove_unnecessary_nodes if last_child.children.empty?
     end
     
     !!last_child

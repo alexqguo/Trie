@@ -44,8 +44,14 @@ class TrieNode
     words.flatten
   end
   
-  def remove_unnecessary_parents
-    
+  def remove_unnecessary_nodes(node = nil)
+    if @children.length <= 1
+      @children.clear
+      @parent.remove_unnecessary_nodes(self)
+    else
+      # Just delete the node
+      @children.delete(node)
+    end
   end
 
   def print
