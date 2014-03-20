@@ -49,7 +49,7 @@ class TrieNode
       @children.clear
       @parent.remove_unnecessary_nodes(self)
     else
-      # Just delete the node
+      # Just delete that node
       @children.delete(node)
     end
   end
